@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Controller
+{
+    -DatePicker itemDueDate
+    -TextField itemName
+    -ComboBox<String> listFilter
+    -TextField listName
+    -ListView<ToDoListItem> toDoItems
+    -ListView<ToDoList> toDoLists
+    -int listSelectedID
+    -int itemSelectedID
+    -addToDoListItem(MouseEvent event)
+    -createNewList(MouseEvent event)
+    -onListNameChanged(InputMethodEvent event)
+    -onItemDescriptionChanged(InputMethodEvent event)
+    -itemDueDateChanged(InputMethodEvent event)
+    -itemCompleted(MouseEvent event)
+    -removeList(MouseEvent event)
+    -removeToDoListItem(MouseEvent event)
+    -onListFilterChanged(InputMethodEvent event)
+    -saveToDoList(MouseEvent event)
+    -openNewListsFromFile
+    -List<ToDoList> ConvertFilesToJson(Path path)
+}
+
+@enduml

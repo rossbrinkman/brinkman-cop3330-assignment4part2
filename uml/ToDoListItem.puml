@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ToDoListItem
+{
+    +String itemName, itemDescription
+    +DatePicker itemDueDate
+    +CheckBox completed
+}
+@enduml

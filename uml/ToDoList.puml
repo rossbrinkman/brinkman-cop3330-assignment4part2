@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ToDoList
+{
+    +List<ToDoListItem> listItems
+    +String listName
+    +ComboBox<String> listFilter
+}
+
+@enduml

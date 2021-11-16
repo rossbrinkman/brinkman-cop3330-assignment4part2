@@ -47,30 +47,6 @@ public class Controller implements Initializable {
     public ToDoListItem currentlySelectedItem;
     int listSize, itemListSize;
 
-    // This is essentially a start function. The list filter is assigned here.
-    // Also, event listeners are added to several values to make sure we know when the values are changed
-    @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        listFilter.getItems().addAll("All", "Completed", "Incomplete");
-        listFilter.getSelectionModel().select("All");
-
-        itemDescription.textProperty().addListener((ov, oldValue, newValue) -> {
-            if (itemDescription.getText().length() > 256) {
-                String s = itemDescription.getText().substring(0, 256);
-                itemDescription.setText(s);
-            }
-        });
-
-        itemComplete.selectedProperty().addListener((observable, oldValue, newValue) -> CheckFilter());
-
-        listFilter.valueProperty().addListener((observable, oldValue, newValue) -> filterList());
-
-        toDoLists.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> onSelectionChanged());
-
-        toDoItems.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> onItemSelectionChanged());
-    }
-
     @FXML
     public void addToDoListItem() {
 
@@ -402,5 +378,29 @@ public class Controller implements Initializable {
             newList.observableListItems.add(newItem);
         }
         return newList;
+    }
+
+    // This is essentially a start function. The list filter is assigned here.
+    // Also, event listeners are added to several values to make sure we know when the values are changed
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        listFilter.getItems().addAll("All", "Completed", "Incomplete");
+        listFilter.getSelectionModel().select("All");
+
+        itemDescription.textProperty().addListener((ov, oldValue, newValue) -> {
+            if (itemDescription.getText().length() > 256) {
+                String s = itemDescription.getText().substring(0, 256);
+                itemDescription.setText(s);
+            }
+        });
+
+        itemComplete.selectedProperty().addListener((observable, oldValue, newValue) -> CheckFilter());
+
+        listFilter.valueProperty().addListener((observable, oldValue, newValue) -> filterList());
+
+        toDoLists.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> onSelectionChanged());
+
+        toDoItems.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> onItemSelectionChanged());
     }
 }

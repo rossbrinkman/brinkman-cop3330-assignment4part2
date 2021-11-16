@@ -5,24 +5,40 @@ class Controller
 {
     -DatePicker itemDueDate
     -TextField itemName
+    -CheckBox itemComplete
+    -TextArea itemDescription
     -ComboBox<String> listFilter
     -TextField listName
     -ListView<ToDoListItem> toDoItems
     -ListView<ToDoList> toDoLists
-    -int listSelectedID
-    -int itemSelectedID
-    -addToDoListItem(MouseEvent event)
-    -createNewList(MouseEvent event)
-    -onListNameChanged(InputMethodEvent event)
-    -onItemDescriptionChanged(InputMethodEvent event)
-    -itemDueDateChanged(InputMethodEvent event)
-    -itemCompleted(MouseEvent event)
-    -removeList(MouseEvent event)
-    -removeToDoListItem(MouseEvent event)
-    -onListFilterChanged(InputMethodEvent event)
-    -saveToDoList(MouseEvent event)
-    -openNewListsFromFile
-    -List<ToDoList> ConvertFilesToJson(Path path)
+    -AnchorPane listInspector
+    -AnchorPane toDoInspector
+    -AnchorPane toDoPane
+    -Group toDoButtons
+    -ToDoList currentlySelected
+    -ToDoListItem currentlySelectedItem
+    -int listSize
+    -int itemListSize
+
+    +initialize(URL url, ResourceBundle rb)
+    +addToDoListItem()
+    -ResetItemInspector()
+    +createNewList()
+    -onSelectionChanged()
+    -onItemSelectionChanged()
+    +filterList()
+    -makeIncompleteVisible()
+    -makeCompletedVisible()
+    -makeAllVisible()
+    -CheckFilter()
+    -CheckItemCount()
+    +removeList()
+    +removeToDoListItem()
+    +clearToDoList()
+    +saveToDoList()
+    +openNewListsFromFile()
+    -String putListDataIntoString()
+    -ToDoList putStringIntoNewList(File data)
 }
 
 @enduml

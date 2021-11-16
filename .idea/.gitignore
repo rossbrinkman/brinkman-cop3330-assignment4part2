@@ -3,3 +3,12 @@
 /workspace.xml
 .gradle/
 /build/
+/.idea/
+/uml/
+/gradle/
+/src/
+/.gitignore
+/build.gradle
+/gradlew
+/gradlew.bat
+/settings.gradle

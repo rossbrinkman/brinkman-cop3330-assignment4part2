@@ -14,11 +14,12 @@ import java.io.IOException;
 
 public class App extends Application {
 
+    // Creates the starting application window
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("mainGUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 700);
-        stage.setTitle("Hello!");
+        stage.setTitle("To-Do Lists");
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);

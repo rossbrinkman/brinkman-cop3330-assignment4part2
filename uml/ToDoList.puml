@@ -3,9 +3,13 @@
 
 class ToDoList
 {
-    +List<ToDoListItem> listItems
-    +String listName
+    +ListView<ToDoListItem> hiddenItems
+    +TextField listName
     +ComboBox<String> listFilter
+    +ObservableList<ToDoListItem> observableListItems
+
+    +String ToString()
+    -ToDoList()
 }
 
 @enduml

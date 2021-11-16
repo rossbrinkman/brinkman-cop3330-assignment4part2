@@ -10,7 +10,6 @@ module ucf.assignments {
     requires com.google.gson;
     requires org.junit.jupiter.api;
 
-
     opens ucf.assignments to javafx.fxml;
     exports ucf.assignments;
 }

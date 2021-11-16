@@ -1,6 +1,9 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import ucf.assignments.Controller;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,115 +12,71 @@ import static org.junit.jupiter.api.Assertions.*;
  *  Copyright 2021 Ross Brinkman
  */
 
+
 class ControllerTest {
 
-    @Test
+
+    @Test // Make sure the size of the list is bigger after this function is called
     void addToDoListItem() {
-        //previousCount = Controller.toDoListItems.Count
-        //Controller.addToDoListItem();
-        //assertTrue(previousCount < Controller.toDoListItems.Count)
+        Controller controller = new Controller();
+        int before = controller.toDoItems.getItems().size();
+        controller.addToDoListItem();
+        int after = controller.toDoItems.getItems().size();
+        assertTrue(before > after);
     }
 
-    @Test
+    @Test // Make sure the size of the list is bigger after this function is called
     void createNewList() {
-        //previousCount = Controller.toDoLists.Count
-        //Controller.createNewList();
-        //assertTrue(previousCount < Controller.toDoLists.Count)
+        Controller controller = new Controller();
+        int before = controller.toDoLists.getItems().size();
+        controller.createNewList();
+        int after = controller.toDoLists.getItems().size();
+        assertTrue(before > after);
     }
 
-    @Test
-    void onListNameChanged() {
-        /*
-        String prevName = toDoList.listName
-        Controller.onListNameChanged()
-        assertFalse(prevName == toDoList.listName)
-        */
+    @Test // Make sure the items of this list are completed after this function is called with the "Completed" filter
+    void filterList() {
+        Controller controller = new Controller();
+        controller.listFilter.setValue("Completed");
+        controller.filterList();
+        assertTrue(controller.toDoItems.getItems().get(0).completed.isSelected());
     }
 
-    @Test
-    void onItemDescriptionChanged() {
-        /*
-        String prevDescription = toDoListItem.itemDescription
-        Controller.onItemDescriptionChanged()
-        assertFalse(prevDescription == toDoListItem.itemDescription)
-        */
-    }
-
-    @Test
-    void itemDueDateChanged() {
-        /*
-        * DueDate dd = item.itemDueDate;
-        * itemDueDateChanged()
-        * assertFalse(dd == item.itemDueDate)
-        */
-    }
-
-    @Test
-    void itemCompleted() {
-        /*
-        * Boolean completed = getItem from selectedID completed
-        * itemCompleted()
-        * assertFalse(completed == getItem from selectedID completed)
-        */
-    }
-
-    @Test
+    @Test // Make sure the size of the list is smaller after this function is called
     void removeList() {
-        /*
-        removeList()
-        assertTrue(toDoLists.getItems() get selectedID == null)
-        */
+        Controller controller = new Controller();
+        int before = controller.toDoLists.getItems().size();
+        controller.removeList();
+        int after = controller.toDoLists.getItems().size();
+        assertTrue(before > after);
     }
 
-    @Test
+    @Test // Make sure the size of the list is smaller after this function is called
     void removeToDoListItem() {
-        /*
-        removeToDoListItem()
-        assertTrue(toDoListsItems get selectedID == null)
-        */
+        Controller controller = new Controller();
+        int before = controller.toDoItems.getItems().size();
+        controller.removeList();
+        int after = controller.toDoItems.getItems().size();
+        assertTrue(before > after);
     }
 
-    @Test
-    void onListFilterChanged() {
-        /*
-            String value = find current filter value
-            onListFilterChanged()
-            assertTrue(value != find current filter value)
-        */
+    @Test // Make sure the size of the list is 0 after this function is called
+    void clearToDoList() {
+        Controller controller = new Controller();
+        controller.removeList();
+        int after = controller.toDoItems.getItems().size();
+        assertEquals(0, after);
     }
 
-    @Test
-    void onSave() {
-        /*
-            String objectName = find name of list of lists
-            onSave()
-            assertTrue(check if .json with objectName as file name exists)
-        */
+    @Test // Make sure this function finishes with the "Success" return statement
+    void saveToDoList() throws IOException {
+        Controller controller = new Controller();
+        assertEquals("Success", controller.saveToDoList());
     }
 
-    @Test
-    void saveToDoList() {
-        /*
-            String listName = find name of list
-            saveToDoList()
-            assertTrue(check if .json with listName as file name exists)
-        */
-    }
-
-    @Test
-    void openNewListsFromFile() {
-        /*
-            int prevListCount = Controller.toDoLists.Count();
-            openNewListsFromFile()
-            assertTrue(prevListCount < Controller.toDoLists.Count())
-        */
-    }
-
-    @Test
-    void convertFilesToJson() {
-        /*
-            List<Controller.ToDoList> newLists = convertFilesToJson("putPathHere.json");
-            assertTrue(newLists.isEmpty() = false);
-        */
+    @Test // Make sure this function finishes with the "Success" return statement
+    void openNewListsFromFile() throws FileNotFoundException {
+        Controller controller = new Controller();
+        assertEquals("Success", controller.openNewListsFromFile());
     }
 }

@@ -3,8 +3,11 @@
 
 class ToDoListItem
 {
-    +String itemName, itemDescription
+    +TextField itemName, itemDescription
     +DatePicker itemDueDate
     +CheckBox completed
+
+    +String ToString()
+    -ToDoListItem()
 }
 @enduml
